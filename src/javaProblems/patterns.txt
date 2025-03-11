@@ -1,0 +1,511 @@
+public class Patterns {
+
+
+    public static void main(String[] args) {
+
+
+        for(int i =0;i<5;i++)
+        {
+            for(int j =0; j<i+1 ; j++){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+
+
+
+        /*
+
+        *
+        * *
+        * * *
+        * * * *
+        * * * * *
+
+
+         */
+
+
+
+
+         for(int i =0;i<5;i++)
+                 {
+                     for(int j =0; j<i+1 ; j++){
+                         System.out.print((char) (65+j)+" ");
+                     }
+                     System.out.println();
+                 }
+
+
+
+                 /*
+
+                 A
+                 A B
+                 A B C
+                 A B C D
+                 A B C D E
+
+                  */
+
+
+
+         for(int i =1;i<=5;i++)
+                 {
+                     for(int j =1; j<=6-i ; j++){
+                         System.out.print("* ");
+                     }
+                     System.out.println();
+                 }
+
+
+                 /*
+
+                 * * * * *
+                 * * * *
+                 * * *
+                 * *
+                 *
+
+                 */
+
+
+
+
+                for(int i =1 ;i<=5;i++){
+
+                            for (int j = 0; j < 5-i ; j++) {
+
+                                System.out.print(" ");
+
+                            }
+                            for(int k =1;k<=i;k++)
+
+                            {
+                                System.out.print("*");
+                            }
+
+                            System.out.println();
+
+                        }
+
+
+
+                        /*
+
+
+                             *
+                            **
+                           ***
+                          ****
+                         *****
+
+
+                         */
+
+
+                        for (int i = 1; i <=5 ; i++) {
+
+
+                                    for (int j = 0; j <=5-i-1; j++) {
+                                        System.out.print(" ");
+                                    }
+
+                                    for (int k = 1 ; k <= (2*i)-1; k++) {
+
+                                        System.out.print("*");
+
+                                    }
+                                    System.out.println();
+
+                                }
+
+
+                        */
+
+                            *
+                           ***
+                          *****
+                         *******
+                        *********
+
+                        /*
+
+
+
+
+
+        int n = 5 ;
+        for (int row = 1; row <=2*n ; row++) {
+            int condition = (row <= n) ? row : n-(row-n);
+            for (int col = 1; col <= condition; col++) {
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
+
+
+        /*
+
+
+
+         *
+         **
+         ***
+         ****
+         *****
+         ****
+         ***
+         **
+         *
+
+
+
+NOTE : Printing the stars from row 1 to n will be the same as the row number .
+       But after the row number n , there comes the tricky part .
+       Here for after the row number n , we need to print n-1 , n-2 , n-3......1 stars.
+       1 , 2 , 3, 4 can be represented as i-n ;
+       Therefore n-(i-n) = 2n-i ;
+
+
+         */
+
+
+
+
+            int n =5;
+
+            for(int row =1 ; row <=5;row++) {
+
+                for (int space = 1; space <= n - row; space++) {
+                    System.out.print("  ");
+                }
+
+
+                for (int col = row; col >=1; col--) {
+                    System.out.print(col+" ");
+                }
+                for(int col = 2 ; col <= row ; col++){
+                    System.out.print(col+" ");
+                }
+                System.out.println("");
+
+            }
+           }
+
+
+        /*
+
+
+                1
+              2 1 2
+            3 2 1 2 3
+          4 3 2 1 2 3 4
+        5 4 3 2 1 2 3 4 5
+
+NOTE : Here we first print the space part and then the number from row to 1 part and then 2 to the row part .
+
+/*
+
+
+public class javaProblems.Inheritance.Main
+{
+	public static void main(String[] args) {
+
+
+
+
+
+int n =4;
+
+for(int row = 1 ; row <= 2*n;row++){
+
+
+    int condition1=(row <=n)? n-row : row-n;
+    for(int space =1;space<=condition1;space++){
+        System.out.print("  ");
+    }
+
+
+    int col =( row <=n) ?  row : row-(2*(row-n));
+    for( int col3=col;col3>=1;col3--){
+        System.out.print(col3+" ");
+    }
+
+    int condition2= (row <= n) ? row :row-(2*(row-n));
+        for(int col2=2 ; col2 <= condition2 ; col2++){
+        System.out.print(col2+" ");
+    }
+    System.out.println(" ");
+
+}
+
+
+
+ */
+
+   1
+  212
+ 32123
+4321234
+ 32123
+  212
+   1
+
+
+   NOTE : Here we first print the space part and then the number part from row number to 1 and then 2 to row number .
+
+          NOTE : Printing the stars from row 1 to n will be the same as the row number .
+                 But after the row number n , there comes the tricky part .
+                 Here for after the row number n , we need to print n-1 , n-2 , n-3......1 stars.
+                 1 , 2 , 3, 4 can be represented as i-n ;
+                 Therefore n-(i-n) = 2n-i ;
+
+
+
+ /*
+
+public class javaProblems.Inheritance.Main{
+
+    public static int i = 1;
+    public static void main(String[] args){
+
+        int n = 4;
+        for(int row = 1 ; row <=n ; row++){
+
+        //printing the spaces
+
+        for(int space = 1 ; space <= row-1   ; space++){
+
+
+            System.out.print(" ");
+        }
+
+        //printing the first Numbers
+
+        int j = i ;
+        for(int num1 = i; num1 < j+(n-(row-1)) ; num1++ ){
+
+
+            System.out.print(num1+" ");
+            i++;
+        }
+
+
+
+
+        int k = i+2*(fun(n-row));
+        for(int num2 = k ; num2 < k+(n-(row-1)); num2++){
+            System.out.print(num2+" ");
+        }
+        System.out.println("");
+
+    }
+    }
+
+
+    public static int fun(int o ){
+        return (o*(o-1)/2)+o;
+    }
+
+
+}
+
+
+*/
+
+1 2 3 4 17 18 19 20
+  5 6 7 14 15 16
+    8 9 12 13
+      10 11
+
+
+
+NOTE : IN THIS PROBLEM , WE FIRST PRINT THE SPACE RECQUIRED AND THEN THE NUM1 ( 1 TO 4 FOR THE FIRST ROW) .
+       WE ARE STORING THE VALUE OF NUM1 IN THE STATIC VARIABLE .
+       USING THAT STATIC VARIABLE , WE PRINT NUM2.
+
+
+
+/*
+
+
+
+
+ for (int i = 1; i <= 4; i++) {
+            //for begining spaces
+            for (int j = 1; j <= 5 - i; j++) {
+                System.out.print(" ");
+            }
+            System.out.print("*");
+            //intermidiate spaces
+            for (int k = 0; k < (2 * (i - 1)) - 1; k++) {           // 2n-1 (odd formula)
+                System.out.print(" ");
+
+            }
+            if (i != 1) {
+                System.out.print("*");
+            }
+            System.out.println();
+
+        }
+        for (int l = 1; l <= 9; l++) {
+            System.out.print("*");
+        }
+
+
+
+        /*
+
+            *
+           * *
+          *   *
+         *     *
+        *********
+
+        */
+
+
+
+public class Main{
+
+    public static void main(String[] args){
+
+        String s = "12345";
+        int n = s.length();
+
+        for(int i = 0 ; i < n;i++){
+            for(int j = 0 ; j <n ; j++){
+
+
+                if( i ==j ){
+                    System.out.print(s.charAt(i));
+                }
+               else if( i + j == n-1 ){
+                    System.out.print(s.charAt(s.length()-1-i));
+                }
+                else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+
+    }
+
+}
+
+
+
+/*
+
+s       r
+ u     a
+  r   h
+   e d
+    n
+   e d
+  r   h
+ u     a
+s       r
+
+*/
+
+
+
+
+
+
+ int n= 10;
+
+        for(int i = 1 ; i<=n*2-1 ; i++){
+
+            for(int j =1 ; j<=n; j++){
+
+
+                if(i>n){
+
+                    if(i+j <=n*2-1){
+                        System.out.print(" ");
+                    }
+                    else{
+                        System.out.print(j+" ");
+                    }
+
+
+                }
+                else{
+
+                if(j<i){
+                    System.out.print(" ");
+                }
+                else if(j>=i){
+                    System.out.print(j+" ");
+                }
+
+
+                }
+
+
+
+                /*
+        12345
+         2345
+          345
+           45
+            5
+        */
+
+
+
+
+            }
+            System.out.println();
+
+        }
+
+
+
+
+public static void pattern(int n) {
+
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=2*n-i;j++){
+
+                if(i+j >n){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(" ");
+                }
+
+
+            }
+            System.out.println();
+        }
+
+    }
+    /*
+
+          *******
+         *******
+        *******
+       *******
+      *******
+     *******
+    *******
+
+
+*/
+
+
+
+
+
+
+
+
+    }
+
+
+}
