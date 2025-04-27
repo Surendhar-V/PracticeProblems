@@ -1,44 +1,25 @@
 package javaProblems;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+class Main {
 
-public class Main {
     public static void main(String[] args) {
-
-        int[] nums1 = {1, 2, 2};
-        int[] nums2 = {4, 3, 3};
-        int[] nums3 = {5};
-
-        func(nums1, nums2, nums3);
-
+        int[] arr = {2,7,9,3,1};
+        int res = rob(arr);
+        System.out.println(res);
     }
 
-    public static List<Integer> func(int[] nums1, int[] nums2, int[] nums3) {
+    public static int rob(int[] arr) {
 
-        Map<Integer, Integer> map = new HashMap<>();
+        int[] dp = new int[arr.length];
+        dp[0] = arr[0];
+        dp[1] = Math.max(arr[0] , arr[1]);
 
-        Arrays.stream(nums1).forEach(num -> map.put(num, 1));
-        Arrays.stream(nums2).forEach(num -> {
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else {
-                map.put(num, 1);
-            }
-        });
-        Arrays.stream(nums3).forEach(num -> {
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else {
-                map.put(num, 1);
-            }
-        });
+        for (int i =2 ; i<arr.length ; i++){
+            dp[i] = Math.max(dp[i - 2]+arr[i] , dp[i-1]);
+        }
 
-        System.out.println(map);
+        return Math.max(dp[arr.length-1] , dp[arr.length-2]);
 
-        return null;
     }
 
 }
