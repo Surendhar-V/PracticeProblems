@@ -106,7 +106,7 @@ class airTrafficControl extends Thread{
 			}
 			case 4:{
 					for(runWay rw:runWays){
-						if(rw.status==true)
+						if(rw.status)
 							System.out.println(rw.name+" is free");
 						else
 							System.out.println(rw.name+" is busy");
@@ -114,10 +114,9 @@ class airTrafficControl extends Thread{
 				break;
 			}
 			case 5:
-				return;
-		}
+        }
 	}
-	public static void main(String args[]){
+	public static void main(String[] args){
 		Scanner s1=new Scanner(System.in);
 		int ans=1;
 		airTrafficControl atc = new airTrafficControl();

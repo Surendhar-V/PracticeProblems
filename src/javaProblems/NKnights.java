@@ -54,11 +54,7 @@ public class NKnights {
             return false;
         }
 
-        if (isValid(row - 2 , col + 1 , board) && board[row - 2][col + 1]) {
-            return false;
-        }
-
-        return true;
+        return !isValid(row - 2, col + 1, board) || !board[row - 2][col + 1];
 
     }
 

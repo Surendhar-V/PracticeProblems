@@ -17,7 +17,7 @@ class Solution {
 
         mergeSort(indexes, 0, nums.length - 1, new Index[nums.length]);
 
-        int target[] = new int[nums.length];
+        int[] target = new int[nums.length];
 
         for (int i = 0; i < nums.length; i++) {
             target[i] = nums[indexes[i].oldIndex];

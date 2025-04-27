@@ -9,9 +9,11 @@ public class Minesweeper {
     private static final int UNREVEALED = 0;
     private static final int FLAGGED = 2;
 
-    private int[][] board;
-    private boolean[][] revealed;
-    private int rows, cols, numMines;
+    private final int[][] board;
+    private final boolean[][] revealed;
+    private final int rows;
+    private final int cols;
+    private final int numMines;
     private boolean gameOver;
 
     private final int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};

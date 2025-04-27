@@ -5,8 +5,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class DeadLock {
     private int count = 0;
-    private Lock lock1 = new ReentrantLock();
-    private Lock lock2 = new ReentrantLock();
+    private final Lock lock1 = new ReentrantLock();
+    private final Lock lock2 = new ReentrantLock();
 
     public void increment1() {
         System.out.println(Thread.currentThread().getName() + "Entered increment1");
