@@ -1,44 +1,33 @@
 package javaProblems;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
 
-        int[] nums1 = {1, 2, 2};
-        int[] nums2 = {4, 3, 3};
-        int[] nums3 = {5};
-
-        func(nums1, nums2, nums3);
+        int[] arr = {8, 1, 2, 2, 3};
+        System.out.println(Arrays.toString(smallerNumbersThanCurrent(arr)));
 
     }
 
-    public static List<Integer> func(int[] nums1, int[] nums2, int[] nums3) {
+    public static int[] smallerNumbersThanCurrent(int[] nums) {
 
-        Map<Integer, Integer> map = new HashMap<>();
+        int[] res = new int[nums.length];
+        int[] countArr = new int[101];
 
-        Arrays.stream(nums1).forEach(num -> map.put(num, 1));
-        Arrays.stream(nums2).forEach(num -> {
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else {
-                map.put(num, 1);
-            }
-        });
-        Arrays.stream(nums3).forEach(num -> {
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else {
-                map.put(num, 1);
-            }
-        });
+        for (int a : nums) {
+            countArr[a]++;
+        }
 
-        System.out.println(map);
+        for (int i = 1; i < countArr.length; i++) {
+            countArr[i] += countArr[i - 1];
+        }
 
-        return null;
+        for (int i = 0; i < nums.length; i++) {
+            res[i] = countArr[nums[i] - 1];
+        }
+
+        return res;
     }
 
 }
