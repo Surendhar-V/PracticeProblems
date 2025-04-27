@@ -79,9 +79,7 @@ public class mergesort_inplace {
 //            m++;
 //        }
 
-        for (int l = 0; l < mix.length; l++) {
-            arr[start+l] = mix[l];
-        }
+        System.arraycopy(mix, 0, arr, start + 0, mix.length);
 
     }
 }

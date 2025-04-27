@@ -25,9 +25,7 @@ sealed class Shape {
 }
 
 fun main() {
-    val shape: Shape = Shape.Rectangle(40, 40)
-
-    when (shape) {
+    when (val shape: Shape = Shape.Rectangle(40, 40)) {
 
         is Shape.Rectangle -> {
             shape.area()

@@ -75,7 +75,7 @@ public class Non_OverlappingIntervals {
         }
 
 
-        System.arraycopy(mix, 0, arr, s + 0, mix.length);
+        System.arraycopy(mix, 0, arr, s, mix.length);
 
     }
 

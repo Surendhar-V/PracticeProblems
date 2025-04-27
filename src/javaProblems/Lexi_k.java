@@ -94,9 +94,7 @@ public class Lexi_k {
             mix[k++] = arr[j++];
         }
 
-        for(int l = 0 ; l<mix.length;l++){
-            arr[l+start] = mix[l];
-        }
+        System.arraycopy(mix, 0, arr, 0 + start, mix.length);
 
 
 

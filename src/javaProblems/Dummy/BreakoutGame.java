@@ -140,7 +140,9 @@ public class BreakoutGame extends JPanel implements ActionListener {
 // Paddle class
 class Paddle {
 
-    private int x, y, dx;
+    private int x;
+    private final int y;
+    private int dx;
     private final int WIDTH = 100;
     private final int HEIGHT = 10;
 
@@ -184,7 +186,11 @@ class Paddle {
 
 class Ball {
 
-    private int x, y, dx, dy, size;
+    private int x;
+    private int y;
+    private int dx;
+    private int dy;
+    private final int size;
 
     public Ball() {
         x = 400;
@@ -230,7 +236,10 @@ class Ball {
 
 // Brick class
 class Brick {
-    private int x, y, width, height;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
     private boolean destroyed;
 
     public Brick(int x, int y) {

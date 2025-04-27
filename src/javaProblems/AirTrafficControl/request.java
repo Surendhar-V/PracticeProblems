@@ -24,7 +24,7 @@ class request extends Thread{
 				System.out.println("the plane will stop after "+compTime+" sec of touch down");
 				System.out.println(rw.name+" will be ready for next request in "+compTime+" sec");
 				System.out.println("---------------------------------------------------------------------------------");
-				Thread.sleep(1000*compTime);
+				Thread.sleep(1000L *compTime);
 				rw.status=true;
 			}
 			catch(Exception e){ 
