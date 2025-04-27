@@ -1,7 +1,6 @@
 package kotlinProblems
 
-var b = 20
-fun main(){
-    var a = 10
+val num = 10
+fun main() {
+    println(num)
 }
-
