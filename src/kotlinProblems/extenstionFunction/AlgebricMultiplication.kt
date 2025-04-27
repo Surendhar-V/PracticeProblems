@@ -1,4 +1,4 @@
-package kotlinProblems
+package kotlinProblems.extenstionFunction
 
 fun main() {
 
