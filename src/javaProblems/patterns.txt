@@ -1,7 +1,7 @@
 public class Patterns {
 
 
-    public static void main(String[] args) {
+    public static void javaProblems.Dummy.main(String[] args) {
 
 
         for(int i =0;i<5;i++)
@@ -210,7 +210,7 @@ NOTE : Here we first print the space part and then the number from row to 1 part
 
 public class javaProblems.Inheritance.Main
 {
-	public static void main(String[] args) {
+	public static void javaProblems.Dummy.main(String[] args) {
 
 
 
@@ -268,7 +268,7 @@ for(int row = 1 ; row <= 2*n;row++){
 public class javaProblems.Inheritance.Main{
 
     public static int i = 1;
-    public static void main(String[] args){
+    public static void javaProblems.Dummy.main(String[] args){
 
         int n = 4;
         for(int row = 1 ; row <=n ; row++){
@@ -369,7 +369,7 @@ NOTE : IN THIS PROBLEM , WE FIRST PRINT THE SPACE RECQUIRED AND THEN THE NUM1 ( 
 
 public class Main{
 
-    public static void main(String[] args){
+    public static void javaProblems.Dummy.main(String[] args){
 
         String s = "12345";
         int n = s.length();

@@ -60,7 +60,7 @@ public class find_rbs {
 // MY ALGORITHM
 public class find_rbs {
 
-    public static void main(String[] args) {
+    public static void javaProblems.Dummy.main(String[] args) {
         int[] arr ={9,10,11,12,13,14,15,16}  ;
 
         System.out.println(findpeak(arr));

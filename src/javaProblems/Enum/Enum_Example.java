@@ -55,7 +55,7 @@ public class Enum_Example {
 //    }
 //}
 //public class Sample{
-//    public static void main(String args[]){
+//    public static void javaProblems.Dummy.main(String args[]){
 //        StudentMarks m[] = StudentMarks.values();
 //        for(int i = 0; i<m.length; i++ ) {
 //            StudentMarks.getMarks(i);
