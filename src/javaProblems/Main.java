@@ -4,8 +4,8 @@ class Main {
 
     public static void main(String[] args) {
 
-        int[] nums1 = {2,0,2,0};
-        int[] nums2 = {1,4};
+        int[] nums1 = {3,2,0,1,0};
+        int[] nums2 = {6,5,0};
         Main main = new Main();
         System.out.println(main.minSum(nums1, nums2));
 
@@ -35,24 +35,15 @@ class Main {
         }
 
         long start = Math.min(sum2, sum1);
-        long end = Long.MAX_VALUE - start;
+        long end = Integer.MAX_VALUE/30 - start ;
         long res = 0;
-        int max = Math.max(sum1, sum2);
-        int min = Math.min(sum1 , sum2);
-        int maxZeros = (max == sum1) ? zeros1 : zeros2;
-        int minZeros = (min == sum1) ? zeros1 : zeros2;
 
         while (start <= end) {
             long mid = (start + end) / 2;
             if(mid <=0){
                 break;
             }
-            max = Math.max(sum1, sum2);
-            maxZeros = (max == sum1) ? zeros1 : zeros2;
-            min = Math.min(sum1 , sum2);
-            minZeros = (min == sum1) ? zeros1 : zeros2;
-
-            boolean separated = canSeparated(zeros1, zeros2, mid, max , maxZeros , min , minZeros);
+            boolean separated = canSeparated(sum1 , sum2 , mid , zeros1 , zeros2);
             if (separated) {
                 res = mid;
                 end = mid - 1;
@@ -62,17 +53,43 @@ class Main {
 
         }
 
-        return canSeparated(zeros1, zeros2, res, Math.max(sum1, sum2), maxZeros, min, minZeros) ? res : -1;
+        return canSeparated(sum1 , sum2 , res , zeros1 , zeros2) ? res : -1;
     }
 
-    private boolean canSeparated(int zeros1, int zeros2, long sum, int max, int maxZeros, int min, int minZeros) {
-        if (zeros1 == 0 && zeros2 == 0) {
+    private boolean canSeparated(int sum1, int sum2, long mid, int zeros1, int zeros2) {
+
+        if (zeros1 == 0 && zeros2 == 0 && sum1 != sum2) {
             return false;
-        } else if (sum < zeros1 || sum < zeros2) {
-            return false;
-        } else if (sum >= max+maxZeros && sum >= min + minZeros) {
+        }else if(zeros1 == 0 && zeros2 == 0){
             return true;
         }
+
+        long leftExtras = (mid - sum1);
+        if(leftExtras < 0L){ return false; }
+
+        long rightExtras = (mid - sum2);
+        if(rightExtras <0L){ return false; }
+
+        long leftSum = 0;
+
+        if(zeros1 != 0) {
+            leftSum = zeros1 * (leftExtras / zeros1) + leftExtras % zeros1;
+        }
+
+        long rightSum = 0;
+
+        if(zeros2 != 0) {
+            rightSum = zeros2 * (rightExtras / zeros2) + rightExtras % zeros2;
+        }
+
+        if(leftSum < 0L){ return false; }
+        if(rightSum < 0L){ return false; }
+
+
+        if(leftSum+sum1 == rightSum+sum2){
+            return true;
+        }
+
         return false;
     }
 
