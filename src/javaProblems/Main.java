@@ -3,94 +3,93 @@ package javaProblems;
 class Main {
 
     public static void main(String[] args) {
-
-        int[] nums1 = {3,2,0,1,0};
-        int[] nums2 = {6,5,0};
+        int m = 5;
+        int n = 5;
         Main main = new Main();
-        System.out.println(main.minSum(nums1, nums2));
+//        System.out.println(main.colorTheGrid(m, n));
+        int a = 1024;
+        System.out.println(Integer.toBinaryString(a));
+        int res = setCurLastValue(a , 5 , 0 , 3);
+        System.out.println(Integer.toBinaryString(res));
+        System.out.println(Integer.toBinaryString(main.removeCurLastValue(res , 5 , 0 )));
+    }
+
+    public int colorTheGrid(int m, int n) {
+
+//        00 - NULL
+//        01 - R
+//        10 - G
+//        11 - B
+
+        int mod = (int) 1e9+7;
+        int[][] memo = new int[1025][1024];
+        int prev = 0;
+        int cur = 0 ;
+        return helper(0, 0,prev , cur, m  , n,mod);
 
     }
 
-    public long minSum(int[] nums1, int[] nums2) {
+    private int helper(int row, int col, int prev, int cur, int m , int n ,int mod) {
 
-        int sum1 = 0;
-        int sum2 = 0;
-        int zeros1 = 0;
-        int zeros2 = 0;
+        if(row >= m){
+            return helper(0 , col+1 , cur , 0 , m , n ,  mod);
+        }
 
-        for (int i : nums1) {
-            if (i == 0) {
-                zeros1++;
-            } else {
-                sum1 += i;
+        if(col == n){
+            return 1;
+        }
+
+        int ans =0;
+
+        for(int color =1 ; color<=3 ; color++){
+            boolean canFit = true;
+            if(col-1 >= 0 && getPrevLeftValue(prev , m , col) == color){
+                canFit = false;
+            }
+            if(row-1 >= 0 && getCurTopValue(cur ,m , col ) == color){
+                canFit = false;
+            }
+            if(canFit){
+                cur = setCurLastValue(cur , m , col , color);
+                ans = (ans+ helper( row+1 , col , prev , cur ,m , n , mod))%mod;
+//                cur = removeCurLastValue(cur , m , col , color);
             }
         }
 
-        for (int i : nums2) {
-            if (i == 0) {
-                zeros2++;
-            } else {
-                sum2 += i;
-            }
-        }
+        return ans;
 
-        long start = Math.min(sum2, sum1);
-        long end = Integer.MAX_VALUE/30 - start ;
-        long res = 0;
-
-        while (start <= end) {
-            long mid = (start + end) / 2;
-            if(mid <=0){
-                break;
-            }
-            boolean separated = canSeparated(sum1 , sum2 , mid , zeros1 , zeros2);
-            if (separated) {
-                res = mid;
-                end = mid - 1;
-            } else {
-                start = mid + 1;
-            }
-
-        }
-
-        return canSeparated(sum1 , sum2 , res , zeros1 , zeros2) ? res : -1;
     }
 
-    private boolean canSeparated(int sum1, int sum2, long mid, int zeros1, int zeros2) {
-
-        if (zeros1 == 0 && zeros2 == 0 && sum1 != sum2) {
-            return false;
-        }else if(zeros1 == 0 && zeros2 == 0){
-            return true;
-        }
-
-        long leftExtras = (mid - sum1);
-        if(leftExtras < 0L){ return false; }
-
-        long rightExtras = (mid - sum2);
-        if(rightExtras <0L){ return false; }
-
-        long leftSum = 0;
-
-        if(zeros1 != 0) {
-            leftSum = zeros1 * (leftExtras / zeros1) + leftExtras % zeros1;
-        }
-
-        long rightSum = 0;
-
-        if(zeros2 != 0) {
-            rightSum = zeros2 * (rightExtras / zeros2) + rightExtras % zeros2;
-        }
-
-        if(leftSum < 0L){ return false; }
-        if(rightSum < 0L){ return false; }
-
-
-        if(leftSum+sum1 == rightSum+sum2){
-            return true;
-        }
-
-        return false;
+    private static int setCurLastValue(int cur, int length, int row, int color){
+        int leftShift = (length - row - 1 )*2;
+        int mask = color<<leftShift;
+        cur = cur | mask;
+        return cur;
     }
+
+    private int removeCurLastValue(int cur, int length, int row){
+        int leftShift = (length - row - 1 )*2;
+        int mask = 2<<leftShift;
+        mask = ~mask;
+        cur = cur & mask;
+        return cur;
+    }
+
+    private int getCurTopValue(int cur, int length, int col){
+        int leftShift = (length - col - 1 )*2;
+        int mask = 3<<leftShift;
+        cur = cur & mask;
+
+        return cur;
+    }
+
+    private int getPrevLeftValue(int cur, int length, int col){
+        int leftShift = (length - col)*2;
+        int mask = 3<<leftShift;
+        cur = cur & mask;
+        return cur;
+    }
+
+
 
 }
